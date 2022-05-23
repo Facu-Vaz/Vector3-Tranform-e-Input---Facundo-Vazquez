@@ -8,6 +8,8 @@ public class PlatformMovement : MonoBehaviour
     public bool toRigth;
     public GameObject prefabRight;
     public GameObject prefabLeft;
+    public GameObject baseLeft;
+    public GameObject baseRigth;
 
 
     // Start is called before the first frame update
@@ -31,12 +33,16 @@ public class PlatformMovement : MonoBehaviour
         if (transform.position.x > 2)
         {
             toRigth = false;
-            Instantiate(prefabRight);
+            GameObject clon;
+            clon = Instantiate(prefabRight);
+            clon.transform.position = baseRigth.transform.position + new Vector3(0, 1, 0);
         }
         else if (transform.position.x < -2)
         {
             toRigth = true;
-            Instantiate(prefabLeft);
+            GameObject clon;            
+            clon = Instantiate(prefabLeft);
+            clon.transform.position = baseLeft.transform.position + new Vector3(0, 1, 0); ;
         }
 
     }
